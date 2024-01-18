@@ -3,34 +3,27 @@ import Image from "next/image";
 
 const examples = [
   {
-    id: "router-example",
-    name: "Router",
+    id: "router-example/page-router",
+    name: "Page Router",
   },
   {
-    id: "component-example",
-    name: "Component",
-  },
-  {
-    id: "streaming-example",
-    name: "Streaming",
-  },
-  {
-    id: "server-actions-example",
-    name: "Server Actions",
+    id: "router-example/app-router",
+    name: "App Router",
   },
 ];
 
 export default function Page() {
   return (
     <div className="flex flex-col justify-between items-center h-screen w-screen p-10">
-      <h1 className="text-2xl font-bold mb-4 p-12">
-        Next.js New Features Examples
-      </h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <h1 className="text-2xl font-bold mb-4 p-12">Types of Routers</h1>
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
         {examples.map((example) => (
           <Link
             className="flex bg-white rounded-lg shadow-md p-4 items-center justify-center"
-            href={`/${example.id}`}
+            href={{
+              pathname: `/${example.id}`,
+              query: { slug: "router-test" },
+            }}
             key={example.id}
           >
             <h2 className="text-lg font-bold text-black text-center">
