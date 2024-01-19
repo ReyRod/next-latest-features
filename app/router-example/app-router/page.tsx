@@ -7,7 +7,7 @@ export default function Page({
 }) {
   return (
     <div className="flex flex-col justify-between items-center h-screen w-screen p-10">
-      <h1 className="text-2xl font-bold mb-4 p-12">Page Router</h1>
+      <h1 className="text-2xl font-bold mb-4 p-12">App Router</h1>
       <span>{searchParams?.slug}</span>
       <Image
         className="flex self-center dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
