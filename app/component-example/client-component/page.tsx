@@ -1,10 +1,12 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import apiClient from "@/libs/apiClient";
-import MovieList from "@/components/MovieList";
 import { Movie, Pagination, MoviesResponse } from "@/types/movie";
-import Paginator from "@/components/Paginator";
+
+const MovieList = dynamic(() => import("@/components/MovieList"));
+const Paginator = dynamic(() => import("@/components/Paginator"));
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -20,28 +22,36 @@ export default function Page() {
     total_results: 1,
   });
 
+  const [isPending, startTransition] = useTransition();
+
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchMovies = () => {
       try {
-        const fetchedMovies: MoviesResponse =
-          await apiClient.getPopularMovies(page);
-        setMovies(fetchedMovies.results);
-        setPagination({ ...fetchedMovies });
+        startTransition(async () => {
+          const fetchedMovies: MoviesResponse =
+            await apiClient.getPopularMovies(page);
+          setMovies(fetchedMovies.results);
+          setPagination({ ...fetchedMovies });
+        });
       } catch (error) {
         console.error("Failed to fetch movies:", error);
       }
     };
 
     fetchMovies();
-  }, [page]);
+  }, [page, startTransition]);
 
   return (
     <div className="flex flex-col justify-between items-center h-screen w-screen p-10">
       <h1 className="text-2xl font-bold mb-4 p-12 text-center">
         Popular Movies
       </h1>
-      <MovieList movies={movies} />
-      <Paginator pagination={pagination} />
+      {!isPending && (
+        <>
+          <MovieList movies={movies} />
+          <Paginator pagination={pagination} />
+        </>
+      )}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useEffect, useState, useTransition } from "react";
 import { getMoviesByYear } from "@/app/server-actions-example/actions";
-import MovieList from "@/components/MovieList";
 import { Movie, MoviesResponse } from "@/types/movie";
+const MovieList = dynamic(() => import("@/components/MovieList"));
 
 export default function Page() {
   const [isPending, startTransition] = useTransition();
@@ -16,7 +17,7 @@ export default function Page() {
         await getMoviesByYear(selectedYear);
       setMovies(moviesResponse.results);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onClick = async () => {
@@ -56,7 +57,7 @@ export default function Page() {
         </button>
       </div>
 
-      <MovieList movies={movies} />
+      {!isPending && <MovieList movies={movies} />}
     </div>
   );
 }

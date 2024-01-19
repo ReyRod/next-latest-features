@@ -10,8 +10,12 @@ export default async function UpcomingMovies() {
         Upcoming Movies
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
-        {moviesResponse.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+        {moviesResponse.results.map((movie, index) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            priority={index <= 3 ? true : false}
+          />
         ))}
       </div>
     </div>

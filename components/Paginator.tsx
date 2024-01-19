@@ -12,18 +12,20 @@ export default function Paginator({ pagination }: { pagination: Pagination }) {
     <div className="mx-auto my-10 pb-10">
       {page !== 1 && (
         <Link
-          className="p-4 rounded-lg bg-white text-blue-500 hover:text-blue-700"
+          className="p-4 rounded-lg bg-white text-black"
           href={{ query: { page: page - 1 } }}
         >
           Previous
         </Link>
       )}
 
-      <span className="p-4 rounded-lg bg-white mx-2 text-black">{page}</span>
+      <span className="p-4 rounded-lg bg-white mx-2 text-black font-bold">
+        {page}
+      </span>
 
       {page !== total_pages && (
         <Link
-          className="p-4 rounded-lg bg-white text-blue-500 hover:text-blue-700"
+          className="p-4 rounded-lg bg-white text-black"
           href={{ query: { page: page + 1 } }}
         >
           Next

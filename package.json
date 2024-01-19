@@ -10,6 +10,7 @@
     "prettier": "npx prettier --write '**/*.tsx'"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^14.1.0",
     "axios": "^1.6.5",
     "next": "14.0.4",
     "react": "^18",
