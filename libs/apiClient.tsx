@@ -36,7 +36,7 @@ class ApiClient {
           },
         );
         resolve(response.data);
-      }, 2000);
+      }, 0);
     });
   }
 
@@ -52,7 +52,7 @@ class ApiClient {
           },
         );
         resolve(response.data);
-      }, 5000);
+      }, 2000);
     });
   }
 
@@ -68,7 +68,7 @@ class ApiClient {
           },
         );
         resolve(response.data);
-      }, 2000);
+      }, 0);
     });
   }
 }
