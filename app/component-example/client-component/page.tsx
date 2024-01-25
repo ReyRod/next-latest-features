@@ -5,8 +5,8 @@ import React, { useEffect, useState, useTransition } from "react";
 import apiClient from "@/libs/apiClient";
 import { Movie, Pagination, MoviesResponse } from "@/types/movie";
 
-const MovieList = dynamic(() => import("@/components/MovieList"));
-const Paginator = dynamic(() => import("@/components/Paginator"));
+const MovieList = dynamic(() => import("@/components/movie-list"));
+const Paginator = dynamic(() => import("@/components/paginator"));
 
 export default function Page() {
   const searchParams = useSearchParams();

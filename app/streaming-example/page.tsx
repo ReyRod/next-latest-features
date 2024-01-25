@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import MovieListFull from "@/components/MovieListFull";
-import UpcomingMovies from "@/components/UpcomingMovies";
-import MovieListSkeleton from "@/components/MovieListSkeleton";
+import MovieListFull from "@/components/movie-list-full";
+import UpcomingMovies from "@/components/upcoming-movies";
+import MovieListSkeleton from "@/components/movie-list-skeleton";
 
 export default async function Page() {
   return new Promise((resolve) => {

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState, useTransition } from "react";
 import { getMoviesByYear } from "@/app/server-actions-example/actions";
 import { Movie, MoviesResponse } from "@/types/movie";
-const MovieList = dynamic(() => import("@/components/MovieList"));
+const MovieList = dynamic(() => import("@/components/movie-list"));
 
 export default function Page() {
   const [isPending, startTransition] = useTransition();
@@ -13,8 +13,9 @@ export default function Page() {
 
   useEffect(() => {
     startTransition(async () => {
-      const moviesResponse: MoviesResponse =
-        await getMoviesByYear(selectedYear);
+      const moviesResponse: MoviesResponse = await getMoviesByYear(
+        selectedYear
+      );
       setMovies(moviesResponse.results);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,8 +23,9 @@ export default function Page() {
 
   const onClick = async () => {
     startTransition(async () => {
-      const moviesResponse: MoviesResponse =
-        await getMoviesByYear(selectedYear);
+      const moviesResponse: MoviesResponse = await getMoviesByYear(
+        selectedYear
+      );
       setMovies(moviesResponse.results);
     });
   };
