@@ -1,7 +1,7 @@
 import apiClient from "@/libs/apiClient";
-import MovieList from "@/components/MovieList";
+import MovieList from "@/components/movie-list";
 import { MoviesResponse } from "@/types/movie";
-import Paginator from "@/components/Paginator";
+import Paginator from "@/components/paginator";
 
 export default async function Page({
   searchParams,
@@ -9,7 +9,7 @@ export default async function Page({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
   const moviesResponse: MoviesResponse = await apiClient.getPopularMovies(
-    searchParams?.page ? parseInt(String(searchParams.page)) : 1,
+    searchParams?.page ? parseInt(String(searchParams.page)) : 1
   );
 
   return (

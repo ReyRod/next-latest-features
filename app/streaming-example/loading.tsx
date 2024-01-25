@@ -1,4 +1,4 @@
-import MovieListSkeleton from "@/components/MovieListSkeleton";
+import MovieListSkeleton from "@/components/movie-list-skeleton";
 
 export default async function Loading() {
   return (
