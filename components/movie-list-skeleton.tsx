@@ -1,4 +1,4 @@
-import MovieCardSkeleton from "@/components/MovieCardSkeleton";
+import MovieCardSkeleton from "@/components/movie-card-skeleton";
 
 export default function MovieListSkeleton() {
   return (

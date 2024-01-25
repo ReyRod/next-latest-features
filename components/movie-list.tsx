@@ -1,4 +1,4 @@
-import MovieCard from "@/components/MovieCard";
+import MovieCard from "@/components/movie-card";
 import { Movie } from "@/types/movie";
 
 export default function MovieList({ movies }: { movies: Movie[] }) {
